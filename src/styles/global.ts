@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root{
-        --backgroung: #F0F2F5;
+        --background: #F0F2F5;
         --red:#E62E4D;
         --blue:#5429CC;
         --green:#33CC95;
@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-color: var(--backgroung);
+        background-color: var(--background);
         -webkit-font-smoothing:antialiased;
     }
 
@@ -51,5 +51,28 @@ export const GlobalStyle = createGlobalStyle`
     [disabled]{
         opacity: .6;
         cursor: not-allowed;
+    }
+
+    .react-modal-overlay{
+        background-color:rgba(0,0,0,0.5);
+        position:fixed;
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+    }
+
+    .react-modal-content{
+        width:100%;
+        max-width:576px;
+        background-color:var(--background);
+        padding:3rem;
+        position:relative;
+        border-radius:0.25rem;
     }
 `;
