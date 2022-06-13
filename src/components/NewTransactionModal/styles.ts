@@ -44,7 +44,7 @@ export const Container = styled.form`
 
 		transition:filter 0.2s;
 
-		&:hover{
+		&:hover{   
 			filter:brightness(0.9);
 		}
 	}
@@ -58,6 +58,14 @@ export const TransactionTypeContainer = styled.div`
 	grid-template-columns: 1fr 1fr;
 	gap: 0.5rem;
 	
+	
+`;
+
+interface RadioBoxProps{
+	isActive: boolean;
+}
+
+export const RadioBox = styled.button<RadioBoxProps>`
 	button{
 		height:4rem;
 		border:1px solid #d7d7d7;
@@ -69,7 +77,7 @@ export const TransactionTypeContainer = styled.div`
 		align-items:center;
 		justify-content:center;
 
-		transition: 0.2s;
+		transition: border-color 0.2s;
 
 		&:hover{
 			border-color:${darken(0.1, '#d7d7d7')};
