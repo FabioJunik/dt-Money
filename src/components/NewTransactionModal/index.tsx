@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import Modal from 'react-modal';
 
-import {Container, TransactionTypeContainer, RadioBox} from './styles';
+import {Container, TransactionTypeContainer, RadioBox} from './styles'; 
 
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
@@ -50,6 +50,7 @@ export function NewTransactionModal ({isOpen,onRequestClose}:NewTransactionModal
             type='button'  
             onClick = {()=>{setType('deposit')}}
             isActive = {type==='deposit'}
+            activeColor = "green"
           >
             <img src={incomeImg} alt='Entrada'/>      
             <span>Entrada</span>      
@@ -59,6 +60,7 @@ export function NewTransactionModal ({isOpen,onRequestClose}:NewTransactionModal
             type='button'  
             onClick = {()=>{setType('withdraw');}}
             isActive = {type==='withdraw'}
+            activeColor = "red"
           >
             <img src={outcomeImg} alt='Saída'/>      
             <span>Saída</span>      
