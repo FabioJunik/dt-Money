@@ -9,6 +9,31 @@ import {Container} from "./styles";
 export function Summary (){
     const {transactions} = useContext(TransactionsContext);
 
+    const summary = transactions.reduce((acc, transaction)=>{
+        if(transaction.type === 'deposit'){
+            acc.deposits += transaction.amount;
+            acc.total += transaction.amount;
+        }else{
+            acc.withdraws += transaction.amount;
+            acc.total -= transaction.amount;
+        }
+
+        return acc;
+    },{
+        deposits:0,
+        withdraws:0,
+        total:0
+    })
+
+    function numberFormat(amount:number){
+    
+        return (new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'AOA'
+        }).format(amount))
+        
+    }
+
     return (
         <Container>
             <div>
@@ -16,21 +41,21 @@ export function Summary (){
                     <p>Entrada</p>
                     <img src={incomeImg} alt="Entradas" />
                 </header>
-                <strong>5000,00 AOA</strong>
+                <strong> {numberFormat(summary.deposits)}</strong>
             </div>
             <div>
                 <header>
                     <p>Saídas</p>
                     <img src={outcomeImg} alt="Saídas" />
                 </header>
-                <strong>-2500,00 AOA</strong>
+                <strong>-{numberFormat(summary.withdraws)}</strong>
             </div>
             <div className='heigh-light-background'>
                 <header>
                     <p>Total</p>
                     <img src={totalImg} alt="Total" />
                 </header>
-                <strong>2500,00 AOA</strong>
+                <strong>{numberFormat(summary.total)}</strong>
             </div>
         </Container>
     )
